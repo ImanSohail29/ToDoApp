@@ -1,70 +1,50 @@
-# Getting Started with Create React App
+Todo List Application
+This project is a simple Todo List application built with React and Tailwind CSS. It allows users to manage their tasks, including adding, editing, marking as completed, and deleting tasks. The application provides a clean and user-friendly interface for organizing todos.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Getting Started
+Follow these instructions to get a copy of the project running on your local machine.
 
-## Available Scripts
+Prerequisites
+Make sure you have the following installed on your machine:
 
-In the project directory, you can run:
+Node.js (version 14 or higher)
+Installation
+Clone the repository:
 
-### `npm start`
+bash
+Copy code
+git clone https://github.com/imanimi29/ToDoApp.git
+cd ToDoApp
+Install dependencies:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Using npm:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+npm install
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+To start the development server and run the application locally:
 
-### `npm run build`
+Using npm:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+npm start
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Open your browser and navigate to http://localhost:3000 to see the application in action.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Usage
+Once the application is running, you can perform the following actions:
 
-### `npm run eject`
+Add Todo: Click the "Add Todo" button to add a new todo. Fill in the title and description fields and click "Add" to create the todo.
+Edit Todo: Click the "Edit" button next to a todo to edit its title and description. After making changes, click "Save" to update the todo.
+Mark as Completed: Click the "Mark Completed" button next to a todo to mark it as completed.
+Delete Todo: Click the "Delete" button next to a todo to delete it from the list.
+Filter Todos: Use the dropdown menu to filter todos by their completion status (all, pending, completed).
+Pagination: Use the pagination controls to navigate through the list of todos.
+Contributing
+Contributions are welcome! Feel free to submit bug reports, feature requests, or pull requests to help improve this project.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+License
+This project is licensed under the MIT License - see the LICENSE file for details.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Acknowledgments
+This project was inspired by the need for a simple and clean Todo List application.
+Special thanks to the developers of React and Tailwind CSS for providing excellent tools for building modern web applications.
