@@ -26,7 +26,6 @@ const TodoItem = ({ todo, onUpdate, onDelete }) => {
   const handleDelete = async () => {
     try {
       console.log("handle delete")
-      await axios.delete(`/api/todos/${todo.id}`);
       onDelete(todo.id);
     } catch (error) {
       console.error('Error deleting todo:', error);
