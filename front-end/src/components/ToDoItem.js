@@ -25,6 +25,7 @@ const TodoItem = ({ todo, onUpdate, onDelete }) => {
 
   const handleDelete = async () => {
     try {
+      console.log("handle delete")
       await axios.delete(`/api/todos/${todo.id}`);
       onDelete(todo.id);
     } catch (error) {
@@ -42,68 +43,73 @@ const TodoItem = ({ todo, onUpdate, onDelete }) => {
   };
 
   return (
-    <tr>
-      <td>
-        {isEditing ? (
-          <input
-            type="text"
-            name="title"
-            value={updatedTodo.title}
-            onChange={handleInputChange}
-            className="w-full border rounded py-1 px-2"
-          />
-        ) : (
-          <span>{todo.title}</span>
-        )}
-      </td>
-      <td>
-        {isEditing ? (
-          <input
-            type="text"
-            name="description"
-            value={updatedTodo.description}
-            onChange={handleInputChange}
-            className="w-full border rounded py-1 px-2"
-          />
-        ) : (
-          <span>{todo.description}</span>
-        )}
-      </td>
-      <td>{todo.completed ? 'Completed' : 'Pending'}</td>
-      <td>
-        {isEditing ? (
+    <tr className="border-b border-gray-200 hover:bg-gray-50 transition-colors duration-200">
+  <td className="px-4 py-2">
+    {isEditing ? (
+      <input
+        type="text"
+        name="title"
+        value={updatedTodo.title}
+        onChange={handleInputChange}
+        className="w-full border border-gray-300 rounded-lg py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+      />
+    ) : (
+      <span className="text-gray-800">{todo.title}</span>
+    )}
+  </td>
+  <td className="px-4 py-2">
+    {isEditing ? (
+      <input
+        type="text"
+        name="description"
+        value={updatedTodo.description}
+        onChange={handleInputChange}
+        className="w-full border border-gray-300 rounded-lg py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+      />
+    ) : (
+      <span className="text-gray-800">{todo.description}</span>
+    )}
+  </td>
+  <td className="px-4 py-2 text-center">
+    <span className={todo.completed ? 'text-green-600 font-semibold' : 'text-yellow-600 font-semibold'}>
+      {todo.completed ? 'Completed' : 'Pending'}
+    </span>
+  </td>
+  <td className="px-4 py-2 text-center">
+    {isEditing ? (
+      <button
+        onClick={handleSaveChanges}
+        className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg transition duration-300 ease-in-out"
+      >
+        Save
+      </button>
+    ) : (
+      <>
+        {!todo.completed && (
           <button
-            onClick={handleSaveChanges}
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded"
+            onClick={handleMarkCompleted}
+            className="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg mr-2 transition duration-300 ease-in-out"
           >
-            Save
+            Mark Completed
           </button>
-        ) : (
-          <>
-            {!todo.completed && (
-              <button
-                onClick={handleMarkCompleted}
-                className="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-4 rounded mr-2"
-              >
-                Mark Completed
-              </button>
-            )}
-            <button
-              onClick={() => setIsEditing(true)}
-              className="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-1 px-4 rounded mr-2"
-            >
-              Edit
-            </button>
-            <button
-              onClick={handleDelete}
-              className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-4 rounded"
-            >
-              Delete
-            </button>
-          </>
         )}
-      </td>
-    </tr>
+        <button
+          onClick={() => setIsEditing(true)}
+          className="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-lg mr-2 transition duration-300 ease-in-out"
+        >
+          Edit
+        </button>
+        <button
+          onClick={handleDelete}
+          className="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg transition duration-300 ease-in-out"
+        >
+          Delete
+        </button>
+      </>
+    )}
+  </td>
+</tr>
+
   );
 };
 

@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import socketIOClient from "socket.io-client";
+import { Col, Container, Row, Form, Button, Spinner, Alert } from "react-bootstrap";
 import TodoList from '../components/ToDoList';
 import StatusFilter from '../components/StatusFilter';
 import Pagination from '../components/Pagination';
@@ -83,42 +85,50 @@ const handleStatusFilter = (newStatus) => {
 
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4">Todo Dashboard</h1>
-      <div className="mt-4">
+  <div className="bg-gradient-to-r from-purple-400 via-green-500 to-red-500 text-white py-6">
+      <div className="container mx-auto text-center">
+        <h1 className="text-4xl font-extrabold mb-2">Todo List</h1>
+        <p className="text-lg font-light">Stay organized and manage your tasks efficiently</p>
+      </div>
+    </div>
+    <div className="mt-8 p-6 bg-white rounded-lg shadow-md">
         <input
           type="text"
           name="title"
           value={newTodo.title}
           onChange={(e) => setNewTodo({ ...newTodo, title: e.target.value })}
-          className="w-full border rounded py-1 px-2 mr-2"
+          className="w-full border border-gray-300 rounded-lg py-2 px-4 mb-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           placeholder="New Todo Title"
         />
+    
         <input
           type="text"
           name="description"
           value={newTodo.description}
           onChange={(e) => setNewTodo({ ...newTodo, description: e.target.value })}
-          className="w-full border rounded py-1 px-2 mr-2"
+          className="w-full border border-gray-300 rounded-lg py-2 px-4 mb-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           placeholder="New Todo Description"
         />
-        <button
-          onClick={addTodo}
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded"
-        >
-          Add
-        </button>
-      </div>
+      <button
+        onClick={addTodo}
+        className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg transition duration-300 ease-in-out transform hover:scale-105"
+      >
+        Add Todo
+      </button>
+      <StatusFilter onChange={handleStatusFilter} />
+
+    </div>
        {/* Pagination controls */}
       {/* Status filter */}
-      <StatusFilter onChange={handleStatusFilter} />
       {/* Todo list */}
-      <table className="min-w-full bg-white border-collapse">
-        <thead>
+      <div className="overflow-x-auto">
+      <table className="min-w-full bg-white border border-gray-300 rounded-lg shadow-lg">
+        <thead className="bg-gray-200">
           <tr>
-            <th className="border-b py-2 px-4 text-left">Title</th>
-            <th className="border-b py-2 px-4 text-left">Description</th>
-            <th className="border-b py-2 px-4 text-left">Status</th>
-            <th className="border-b py-2 px-4 text-left">Actions</th>
+            <th className="border-b py-3 px-5 text-left font-semibold text-gray-700">Title</th>
+            <th className="border-b py-3 px-5 text-left font-semibold text-gray-700">Description</th>
+            <th className="border-b py-3 px-5 text-right font-semibold text-gray-700">Status</th>
+            <th className="border-b py-3 px-5 text-right font-semibold text-gray-700">Actions</th>
           </tr>
         </thead>
         <TodoList todos={todos} onUpdate={updateTodo} onDelete={deleteTodo} />
@@ -128,7 +138,7 @@ const handleStatusFilter = (newStatus) => {
         totalPages={Math.ceil(totalTodos / pageSize)}
         onPageChange={handlePageChange}
       />
-      
+      </div>
     </div>
   );
 };
