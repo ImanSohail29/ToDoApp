@@ -25,6 +25,18 @@ const handleStatusFilter = (newStatus) => {
 };
   const fetchTodos = async (page, pageSize, status) => {
     try {
+      if(status===''){
+        const { data } = await axios.get('/api/todos', {
+          params: {
+            page,
+            pageSize
+          }
+        });
+        setTodos(data.todos);
+        setTotalTodos(data.totalTodos)
+      }
+      else
+      {
       const { data } = await axios.get('/api/todos', {
         params: {
           page,
@@ -34,6 +46,8 @@ const handleStatusFilter = (newStatus) => {
       });
       setTodos(data.todos);
       setTotalTodos(data.totalTodos)
+    }
+     
     } catch (error) {
       console.error('Error fetching todos:', error);
     }
